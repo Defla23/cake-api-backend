@@ -9,7 +9,7 @@ export const getCakes = async (req: Request, res: Response) => {
     res.status(500).json({ message: error.message });
   }
 };
-/* by id*/
+
 export const getCake = async (req: Request, res: Response) => {
   try {
     const cake = await cakeService.getCake(Number(req.params.id));

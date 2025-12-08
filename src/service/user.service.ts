@@ -47,18 +47,18 @@ export const createUserWithVerification = async (user: NewUser) => {
   }
 };
 
-// Login user with role-based JWT
+
 export const loginUser = async (email: string, password: string) => {
   const user = await userRepositories.getUserByEmail(email);
 
-  // Check if user exists
+ 
   if (!user) {
     const error: any = new Error("User not found.");
     error.status = 404;
     throw error;
   }
 
-  // Verify password
+  
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
     const error: any = new Error("Invalid credentials.");
@@ -100,7 +100,7 @@ export const loginUser = async (email: string, password: string) => {
   };
 };
 
-// Verify user email
+
 export const verifyUser = async (email: string, code: string) => {
   const user = await userRepositories.getUserByEmail(email);
 
@@ -124,7 +124,7 @@ export const verifyUser = async (email: string, code: string) => {
   return { message: "User verified successfully." };
 };
 
-//  Resend verification code
+
 export const resendVerificationCode = async (email: string) => {
   const user = await userRepositories.getUserByEmail(email);
   if (!user) throw new Error("User not found.");
@@ -147,19 +147,19 @@ export const resendVerificationCode = async (email: string) => {
   return { message: "Verification code resent successfully." };
 };
 
-//  Get all users
+
 export const getAllUsers = async () => {
   return await userRepositories.getUsers();
 };
 
-// Get user by ID
+
 export const getUserById = async (id: number) => {
   const user = await userRepositories.getUserById(id);
   if (!user) throw new Error("User not found.");
   return user;
 };
 
-// Delete user
+
 export const deleteUser = async (id: number) => {
   const user = await userRepositories.getUserById(id);
 
@@ -172,7 +172,6 @@ export const deleteUser = async (id: number) => {
   return { message: "user deleted successfully" };
 };
 
-// Get user by email
 export const getUserByEmail = async (email: string) => {
   return await userRepositories.getUserByEmail(email);
 };

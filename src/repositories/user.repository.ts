@@ -72,15 +72,15 @@ export const updateUser = async (id: number, updates: UpdateUser) => {
   const query = `UPDATE Users SET ${fields.join(", ")} WHERE userid=${id}`;
   const result = await pool.request().query(query);
 
-  // Check if any row was updated
+  
   if (result.rowsAffected[0] === 0) {
-    return null; // user not found
+    return null; 
   }
 
   return { message: "User updated successfully" };
 };
 
-//  Delete user
+
 export const deleteUser = async (id: number) => {
   const pool = await getPool();
 
@@ -91,7 +91,6 @@ export const deleteUser = async (id: number) => {
   return { message: "User deleted successfully" };
 };
 
-// Set verification code
 export const setVerificationCode = async (
   email: string,
   verification_code: string,
@@ -107,7 +106,7 @@ export const setVerificationCode = async (
   return { message: "Verification code saved" };
 };
 
-// Verify user
+
 export const verifyUser = async (email: string) => {
   const pool = await getPool();
   await pool.request().input("email", email).query(`

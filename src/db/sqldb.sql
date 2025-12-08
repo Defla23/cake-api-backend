@@ -1,4 +1,4 @@
--- write all the sql code related to sql db connection and creation of tables here
+
 
 CREATE DATABASE CakeManagementDB;
 GO
@@ -6,7 +6,7 @@ GO
 USE CakeManagementDB;
 GO
 
--- Drop existing tables to avoid conflicts
+
 DROP TABLE IF EXISTS Cake_Orders;
 DROP TABLE IF EXISTS Cake_Designs;
 
@@ -26,7 +26,7 @@ CREATE TABLE Cake_Designs (
         END PERSISTED,
     ImageUrl NVARCHAR(255),
     Category NVARCHAR(100),
-    Availability BIT DEFAULT 1, -- 1 = available, 0 = unavailable
+    Availability BIT DEFAULT 1, 
     CreatedAt DATETIME2 DEFAULT SYSDATETIME(),
     UpdatedAt DATETIME2 DEFAULT SYSDATETIME()
 );
@@ -46,7 +46,7 @@ TRUNCATE TABLE Cake_Designs;
 
 
 ALTER TABLE Cake_Designs
-ADD AvailableSizes NVARCHAR(100) NULL;  -- e.g. 'Small,Medium,Large'
+ADD AvailableSizes NVARCHAR(100) NULL;  
 
 
 DROP TABLE IF EXISTS Cake_Designs;
@@ -119,7 +119,6 @@ GO
 SELECT * FROM Cake_Orders;
 GO
     
-    -- Create users table
 CREATE TABLE Users(
   userid INT PRIMARY KEY IDENTITY(1,1),
   name VARCHAR(100) NOT NULL,
@@ -136,7 +135,6 @@ ADD verification_code VARCHAR(10),
     is_verified BIT DEFAULT 0;
 
 
--- Insert sample users
 INSERT INTO Users (name, email, password, phone, address, role)
 VALUES
 ('Elizabeth Njoki', 'liz@gmail.com', 'hashedpassword123', '0712345678', 'Nyeri', 'admin'),
@@ -169,7 +167,7 @@ DROP TABLE IF EXISTS ReadyMade_Cakes ;
         END PERSISTED,
     imageURL VARCHAR(255),
     quantityAvailable INT DEFAULT 1,
-    isactive BIT DEFAULT 1, -- 1 = available, 0 = unavailable
+    isactive BIT DEFAULT 1, 
     createdAt DATETIME2 DEFAULT SYSDATETIME(),
     updatedAt DATETIME2 DEFAULT SYSDATETIME()
 );
@@ -233,8 +231,6 @@ VALUES
 (3, 'Baking', 'Completed', '2025-10-22 08:30', '2025-10-22 11:30', 'Baked without issues.'),
 (3, 'Decorating', 'Pending', NULL, NULL, 'Scheduled for tomorrow.'),
 (2, 'Baking', 'Completed', '2025-10-23 07:45', '2025-10-23 10:15', 'Red velvet baked perfectly.');
-
--- DROP TABLE Cake_Stages ;
 
 SELECT * FROM Cake_Stages;
 

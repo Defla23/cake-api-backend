@@ -39,7 +39,7 @@ export const updateUserRolesController = async (
 ) => {
   const id = Number(req.params.id);
 
-  // Validate ID first
+  
   if (!Number.isInteger(id)) {
     return res.status(400).json({ message: "Invalid user ID" });
   }
@@ -77,7 +77,7 @@ export const createUserController = async (req: Request, res: Response) => {
   }
 };
 
-//  Login user
+
 
 export const loginUserController = async (req: Request, res: Response) => {
   const { email, password } = req.body;
@@ -94,7 +94,7 @@ export const loginUserController = async (req: Request, res: Response) => {
   }
 };
 
-// Delete user
+
 export const deleteUserController = async (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   if (!Number.isInteger(id)) {
@@ -129,7 +129,7 @@ export const verifyUserController = async (req: Request, res: Response) => {
   }
 };
 
-// Resend verification code
+
 export const resendVerificationController = async (
   req: Request,
   res: Response,

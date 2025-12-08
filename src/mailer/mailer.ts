@@ -5,20 +5,20 @@ dotenv.config();
 
 let transporter;
 
-// Detect test environment safely (Jest or NODE_ENV=test)
+// Detect test 
 const isTestEnv =
   process.env.NODE_ENV === "test" || process.env.JEST_WORKER_ID !== undefined;
 
 if (isTestEnv) {
-  // Mock transporter for tests — no real emails are sent
+  
   transporter = {
     sendMail: async (options: any) => {
       console.log("[TEST MODE] Email would be sent to:", options.to);
-      return { accepted: [options.to], rejected: [] }; // mock success
+      return { accepted: [options.to], rejected: [] }; 
     },
   };
 } else {
-  // Real transporter for development or production
+  // Real 
   transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: 465,
