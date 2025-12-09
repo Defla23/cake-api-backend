@@ -17,12 +17,12 @@ const testUser = {
 beforeAll(async () => {
   pool = await getPool();
 
-  // Clean up before tests
+  
   await pool.request().query(`DELETE FROM Users WHERE email='${testUserEmail}'`);
 });
 
 afterAll(async () => {
-  // Clean up after tests
+ 
   if (testUserId) {
     await pool.request().query(`DELETE FROM Users WHERE userid=${testUserId}`);
   }

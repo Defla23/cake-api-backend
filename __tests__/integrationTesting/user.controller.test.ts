@@ -10,7 +10,7 @@ beforeAll(async () => {
 
   const hashedPassword = await bcrypt.hash("testpass123", 10);
 
-  // Seed user for authentication
+  
   await pool.request().query(`
     INSERT INTO Users (name, email, phone, address, password, role)
     VALUES ('Testuser','testuser@testmail.com','0723454322','nyeri 001','${hashedPassword}','user')
@@ -18,7 +18,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  // Clean up test users
+  
   await pool.request().query("DELETE FROM Users WHERE email LIKE '%@testmail.com'");
   await pool.close();
 });
@@ -56,7 +56,7 @@ describe("User API Integration Test Suite", () => {
       password: "wrongpassword",
     });
 
-    expect(res.statusCode).toBeGreaterThanOrEqual(400);
+    expect(res.statusCode).toBeGreaterThanOrEqual(400);//missing field
   });
 
   it("should fail login with non-existent user", async () => {

@@ -5,11 +5,11 @@ const config: Config = {
     testEnvironment: "node",
     verbose: true, 
 
-    // Coverage Configuration
-    collectCoverage: false, // Enables code coverage collection
-    coverageDirectory: "coverage", // Output directory for coverage reports
+    
+    collectCoverage: true, 
+    coverageDirectory: "coverage", 
     collectCoverageFrom: [
-        '<rootDir>/src/**/*.ts' // Files to include for coverage
+        '<rootDir>/src/**/*.ts' 
     ]
 }
 

@@ -8,7 +8,7 @@ let testCakeId: number;
 beforeAll(async () => {
   pool = await getPool();
 
-  // Seed a test cake
+  
   const result = await pool
     .request()
     .query(`
@@ -20,7 +20,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  // Cleanup
+  
   await pool
     .request()
     .query("DELETE FROM ReadyMade_Cakes WHERE cakeName LIKE 'Test Chocolate Cake%' OR cakeName LIKE 'Integration Strawberry Cake%'");
@@ -59,7 +59,7 @@ describe("ReadyMade Cakes API Integration Tests", () => {
     expect(res.body).toHaveProperty("message", "Cake added successfully");
     expect(res.body.newCake).toHaveProperty("cakeId");
 
-    // Cleanup
+    
     const newCakeId = res.body.newCake.cakeId;
     await pool
       .request()
@@ -79,12 +79,12 @@ describe("ReadyMade Cakes API Integration Tests", () => {
     const res = await request(app)
       .put("/api/readycakes/999999")
       .send({ size: "Large" });
-    expect(res.statusCode).toBe(400); // matches service error handling
+    expect(res.statusCode).toBe(400); 
     expect(res.body.message).toMatch(/cake not found/i);
   });
 
   it("should delete an existing cake", async () => {
-    // Insert cake to delete
+   
     const result = await pool
       .request()
       .query(`
